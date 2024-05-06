@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("diving.jpg"); /* Replace 'background.jpg' with the path to your image */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+/* Container styles */
+.container {
+    display: flex;
+    height: 100vh; /* Set the container height to full viewport height */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
+  /* Form container styles */
+#form-container {
+    background-color: rgb(33 69 93 / 56%); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%; /* Set maximum width for the container */
+    width: 800px; /* Set a fixed width for the container */
+    text-align: center; /* Center content horizontally */
+}
+
+#form {
+    max-width: 100%; /* Allow the form to expand to the container width */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+
+/* Left part styles */
+.left-part {
+    flex: 1; /* Let the left part grow to take up remaining space */
+    padding: 20px;
+}
+
+/* Right part styles */
+.right-part {
+    flex: 1; /* Let the right part grow to take up remaining space */
+    padding: 1px 20px; /* Added top padding to move content down */
+}
+
+/* Divider styles */
+.divider {
+    height: 15px;
+    border-width: 5px;
+    color: gray;
+    margin-top: 20px;
+}
+
+/* Hide the right part by default */
+#bing {
+    display: none;
+}
+
+/* Remove background color */
+.left-part, .right-part {
+    background-color: transparent;
+}
+
+#UserInput {
+    width: 100%; /* Make the search input fill the entire width of its container */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+    padding: 10px; /* Add padding to improve visual appearance */
+    font-size: 16px; /* Set font size */
+    margin-bottom: 10px; /* Add margin to separate from other elements */
+}
+
+h1 {
+    margin: 0 0 20px; /* Add margin to the bottom to separate from other elements */
+    font-size: 36px; /* Set font size */
+    color: black; /* Set text color to black */
+    text-align: center; /* Align text to the right */
+}
+
+
+input[type="radio"].margin {
+    margin: 0px 0px 0px 20px;
+}
+
+
+
+#srch {
+    width: 80px;
+    height: 30px;
+    font-size: 18px;
+    margin: 20px 0px 0px 0px;
+}

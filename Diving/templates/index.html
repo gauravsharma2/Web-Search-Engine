@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diving</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Container for the form -->
+    <div class="container">
+        <div id="form-container">
+            <h1 style="color:white;">Dive in Deep</h1>
+            <form id="form" onsubmit="return true;">
+
+                <input type="text" placeholder="Dive into the web...." id="UserInput"><br/>
+                <p id="relevance" style="color:white;"><b>Relevance Model Options:</b></p>
+                <input type="radio" checked id="page_rank" name="type" value="page_rank">
+                <label id="page_rank_label" for="page_rank" style="color:white;">Page Rank</label>
+                <input type="radio" id="hits" name="type" value="hits" class="margin">
+                <label id="hits_label" for="hits" style="color:white;">HITS</label><br/>
+<!--                <input type="radio" id="none" name="type" value="none" class="margin">-->
+<!--                <label id="none_label" for="none">NONE</label><br/>-->
+                <hr>
+                <p id="clustering" style="color:white;"><b>Clustering Options:</b></p>
+                <input type="radio" id="flat_clustering" name="type1" value="flat_clustering">
+                <label id="flat_clustering_label" for="flat_clustering" style="color:white;">Flat Clustering</label>
+                <input type="radio" id="hierarchical_clustering_single" name="type1" value="hierarchical_clustering" class="margin">
+                <label id="hierarchical_clustering_single_label" for="hierarchical_clustering_single" style="color:white;">Single Hierarchical Clustering</label>
+                <input type="radio" id="hierarchical_clustering_complete" name="type1" value="hierarchical_clustering" class="margin">
+                <label id="hierarchical_clustering_complete_label" for="hierarchical_clustering_complete" style="color:white;">Complete Hierarchical Clustering</label>
+<!--                <input type="radio" id="none1" name="type1" value="none" class="margin">-->
+<!--                <label id="none1_label" for="none">NONE</label><br>-->
+                <hr>
+                <p id="queryexp" style="color:white;"><b>Query Expansion Option:</b></p>
+                <input type="radio" id="association_qe" name="type2" value="association_qe">
+                <label id="association_qe_label" for="association_qe" style="color:white;">Association</label>
+                <input type="radio" id="metric_qe" name="type2" value="metric_qe">
+                <label id="metric_qe_label" for="metric_qe" style="color:white;">Metric</label>
+                <input type="radio" id="scalar_qe" name="type2" value="scalar_qe">
+                <label id="scalar_qe_label" for="scalar_qe" style="color:white;">Scalar</label>
+<!--                <input type="radio" id="none2" name="type2" value="none" class="margin">-->
+<!--                <label id="none2_label" for="none">NONE</label><br/>-->
+                <br/>
+                <hr>
+                <input id="srch" type="button" value="Search" onclick="erase_data(); search(); queryToGoogleBing(); return false;">
+                <hr>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+          $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+              event.preventDefault();
+              return false;
+            }
+          });
+        });
+    </script>
+    <!-- Container for left and right parts -->
+    <div class="container">
+        <!-- Left part -->
+        <div class="left-part">
+            <h2 id="expanded_query" style="display: none; color:black;">Expanded Query :</h2>
+      <div style="text-align: center; color: black;font-size: large; font-weight: bold; background-color: #ffffffcf;" id="expanded_query_result"></div><br>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <iframe id="diving" width="100%" height="600px" style="color: black; background-color: white;"></iframe>
+</div><br/><br/>
+
+    
+        <!-- Right part -->
+        <div class="right-part" id="rightPart">
+            <!-- Dropdown menu -->
+    <select id="selectMenu" onchange="toggleRightPart()">
+        <option value="google">Google Search</option>
+        <option value="bing">Bing Search</option>
+    </select>
+
+    <script>
+        function toggleRightPart() {
+            var selectValue = document.getElementById("selectMenu").value;
+            var googleFrame = document.getElementById("google");
+            var bingFrame = document.getElementById("bing");
+
+            if (selectValue === "google") {
+                googleFrame.style.display = "block";
+                bingFrame.style.display = "none";
+            } else if (selectValue === "bing") {
+                googleFrame.style.display = "none";
+                bingFrame.style.display = "block";
+            }
+        }
+    </script>
+            <div>
+                <iframe id="google" src="https://www.google.com/search?igu=1&source=hp&ei=lheWXriYJ4PktQXN-LPgDA&q=" width="100%" height="600px"></iframe>
+            </div>
+            <br/><br/>
+            <div>
+                <iframe id="bing" src="https://www.bing.com/search?q=" width="100%" height="600px"></iframe>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
